@@ -1,6 +1,6 @@
 const darkModeCheckbox = document.getElementById("checkbox")
 const dropdownBtn = document.getElementById("dropdown-btn")
-
+const fontName = document.getElementById("font-name")
 
 
 // Darkmode logic
@@ -24,6 +24,7 @@ dropdownBtn.addEventListener("click", () => {
     document.getElementById("myDropdown").classList.toggle("show");
 })
 
+
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
@@ -38,18 +39,27 @@ window.onclick = function (event) {
     }
 }
 
-const fontName = document.getElementById("font-name")
+function createArrowDownIcon() {
+    let element = document.createElement("i")
+        element.classList = "fa-solid fa-angle-down"
+        dropdownBtn.append(element)
+}
+
 document.body.addEventListener("click",changeFont)
 function changeFont(e) {
     if(e.target.id === "serif") {
         document.body.style.fontFamily = "serif"
-        fontName.textContent = "Serif"
+        dropdownBtn.textContent = "Serif" 
+        createArrowDownIcon()
     } else if ( e.target.id === "sans-serif") {
         document.body.style.fontFamily = "sans-serif"
-        fontName.textContent = "Sans-Serif"
+        dropdownBtn.textContent = "Sans Serif" 
+        createArrowDownIcon()
     } else if (e.target.id === "monospace") {
         document.body.style.fontFamily = "monospace"
-        fontName.textContent = "Monospace" 
+        dropdownBtn.textContent = "Monospace" 
+        createArrowDownIcon()
+        
     }
    
 }
