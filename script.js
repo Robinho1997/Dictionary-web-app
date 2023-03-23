@@ -1,28 +1,26 @@
 const darkModeCheckbox = document.getElementById("checkbox")
 const dropdownBtn = document.getElementById("dropdown-btn")
 const fontName = document.getElementById("font-name")
+const searchWordBtn = document.getElementById("search-btn")
+const searchedWord = document.getElementById("search-input")
+const contentDiv = document.getElementById("content")
 
-
-// Darkmode logic
 let darkMode = false
+let noun 
+let verb 
+let word
+let phonetics
+let synonym
+let source
+
+
 darkModeCheckbox.addEventListener("click", changeMode)
-
-function changeMode() {
-    darkMode = !darkMode
-    if (darkMode) {
-        document.body.style.backgroundColor = "#495057"
-        document.body.style.color = "white"
-    } else {
-        document.body.style.backgroundColor = "white"
-        document.body.style.color = "black"
-    }
-}
-
-
-// Dropdown Logic
 dropdownBtn.addEventListener("click", () => {
     document.getElementById("myDropdown").classList.toggle("show");
 })
+document.body.addEventListener("click", changeFont)
+searchedWord.addEventListener("keyup",triggerButtonOnEnter)
+searchWordBtn.addEventListener("click",fetchWord)
 
 
 // Close the dropdown menu if the user clicks outside of it
@@ -39,13 +37,29 @@ window.onclick = function (event) {
     }
 }
 
+function triggerButtonOnEnter(e) {
+    if(e.keyCode === 13) {
+        searchWordBtn.click()
+    }
+}
+
+function changeMode() {
+    darkMode = !darkMode
+    if (darkMode) {
+        document.body.style.backgroundColor = "#495057"
+        document.body.style.color = "white"
+    } else {
+        document.body.style.backgroundColor = "white"
+        document.body.style.color = "black"
+    }
+}
+
 function createArrowDownIcon() {
     let element = document.createElement("i")
     element.classList = "fa-solid fa-angle-down"
     dropdownBtn.append(element)
 }
 
-document.body.addEventListener("click", changeFont)
 function changeFont(e) {
     if (e.target.id === "serif") {
         document.body.style.fontFamily = "serif"
@@ -64,40 +78,18 @@ function changeFont(e) {
 
 }
 
-
-// API Call
-
-const searchWordBtn = document.getElementById("search-btn")
-const searchedWord = document.getElementById("search-input")
-const contentDiv = document.getElementById("content")
-let noun 
-let verb 
-let word
-let phonetics
-let synonym
-let source
-
-
-searchedWord.addEventListener("keyup",triggerButtonOnEnter)
-function triggerButtonOnEnter(e) {
-    if(e.keyCode === 13) {
-        searchWordBtn.click()
-    }
-}
-
-searchWordBtn.addEventListener("click",fetchWord)
-
-
 function createHeaderElement() {
     let header = document.createElement("h1")
     contentDiv.append(header)
     header.textContent = word
+    header.setAttribute("class","word")
 }
 
 function createPhoneticsElement() {
     let header = document.createElement("h3")
     contentDiv.append(header)
     header.textContent = phonetics
+    header.setAttribute("class","phonetics")
 }
 
 function createNounElements() {
@@ -159,6 +151,7 @@ function createSourceElements() {
     let sourceText = document.createElement("span")
     let sourceLink = document.createElement("a")
     let icon = document.createElement("i")
+    sourceDiv.setAttribute("class","sourceDiv")
     sourceDiv.append(sourceText, sourceLink, icon)
     contentDiv.append(sourceDiv)
     sourceText.textContent = "Source:"
@@ -171,7 +164,6 @@ function fetchWord() {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchedWord.value}`)
     .then(res => res.json())
     .then(data => {
-       console.log(data)
         word = data[0].word
         phonetics = data[0].phonetics[0] ? data[0].phonetics[0].text : ""
         synonym = data[0].meanings[0].synonyms
@@ -187,4 +179,3 @@ function fetchWord() {
         createSourceElements()
     } )  
 }
-

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Open+Sans&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Courgette&family=Open+Sans&family=Space+Mono&display=swap');
 /*
 font-family: 'Noto Serif', serif;
 font-family: 'Open Sans', sans-serif;
@@ -51,7 +51,7 @@ body {
 
 #search-div {
     position: relative;
-  margin-top: 20px;
+    margin-top: 20px;
     margin-inline: 20%;
 }
 
@@ -59,7 +59,7 @@ body {
 #search-input {
  
     width: 100%;
-   background-color: gainsboro;
+   background-color: rgb(241, 241, 241);
    border: none;
    padding: 15px;
    border-radius: 8px;
@@ -75,25 +75,116 @@ body {
     padding: 15px;
     right: 10px;
     border: none;
-    background-color: gainsboro;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  cursor: pointer;
+    background-color: rgb(241, 241, 241);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    cursor: pointer;
 }
 
 
 
 
+/**
+*! Styles for Generated Content
+**/
+
+#content {
+    margin-inline: 20%;
+    margin-top: 35px;
+    font-size: 17px;
+    margin-bottom: 50px;
+}
+
+.word {
+   font-size: 45px;
+   margin-bottom: 10px;
+}
+
+.phonetics {
+    color: #cc00ff;
+    font-weight: 200;
+}
+
+#nounDiv {
+   margin-block: 40px;
+}
+
+/* noun word */
+#nounDiv > h5, #verbDiv > h5 {
+    margin-bottom: 30px;
+    font-size: 25px;
+    font-family: 'Courgette', cursive;
+   
+}
+
+/* Meaning */
+#nounDiv > h6, #verbDiv > h6 {
+    color: rgb(202, 196, 196);
+    font-size: 23px;
+    font-weight: 100;
+    margin-bottom: 15px;
+}
+
+/* List of Meanings */
+#nounDiv > ul,  #verbDiv > ul {
+    margin-left: 40px;
+    margin-bottom: 50px;
+}
+
+#nounDiv > ul  > li {
+    margin-top: 20px;
+}
+
+.synonymDiv {
+    display: flex;
+    gap: 20px;
+}
+
+.synonymDiv > span {
+   
+    color: rgb(193, 188, 188);
+}
+
+.synonymDiv > p {
+    color:  #cc00ff;
+    font-weight: 600;
+}
+
+.sourceDiv {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-top: 1px solid gainsboro;
+    padding-top: 30px;
+}
+
+.sourceDiv > a {
+    color: gray;
+}
 
 
 
-
-
-
-
-
-
-
+@media (max-width:600px) {
+    #content {
+        margin-inline: 10%;
+       
+    }
+    .navbar {
+       
+        margin-inline: 5%;
+        justify-content: space-between;
+      
+      
+    }
+    #search-div {
+       
+        margin-inline: 10%;
+    }
+    .sourceDiv {
+        font-size: small;
+        justify-content: center;
+    }
+}
 
 
 
