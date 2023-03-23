@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Courgette&family=Open+Sans&family=Space+Mono&display=swap');
-/*
-font-family: 'Noto Serif', serif;
-font-family: 'Open Sans', sans-serif;
-font-family: 'Space Mono', monospace;
-*/
+
 
 body {
     font-family: serif;
@@ -17,6 +13,10 @@ body {
 }
 
 
+/**
+*! Navbar Styles here
+**/
+
 .navbar {
     display: flex;
     margin-inline: 20%;
@@ -24,7 +24,7 @@ body {
     gap: 30px;
     padding-block: 20px;
     align-items: center;
-  
+
 }
 
 .book-icon {
@@ -40,7 +40,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-   
+
 }
 
 
@@ -55,15 +55,13 @@ body {
     margin-inline: 20%;
 }
 
-
 #search-input {
- 
     width: 100%;
-   background-color: rgb(241, 241, 241);
-   border: none;
-   padding: 15px;
-   border-radius: 8px;
-  
+    background-color: rgb(241, 241, 241);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+
 }
 
 #search-input:focus {
@@ -96,8 +94,8 @@ body {
 }
 
 .word {
-   font-size: 45px;
-   margin-bottom: 10px;
+    font-size: 45px;
+    margin-bottom: 10px;
 }
 
 .phonetics {
@@ -106,19 +104,21 @@ body {
 }
 
 #nounDiv {
-   margin-block: 40px;
+    margin-block: 40px;
 }
 
 /* noun word */
-#nounDiv > h5, #verbDiv > h5 {
+#nounDiv>h5,
+#verbDiv>h5 {
     margin-bottom: 30px;
     font-size: 25px;
     font-family: 'Courgette', cursive;
-   
+
 }
 
 /* Meaning */
-#nounDiv > h6, #verbDiv > h6 {
+#nounDiv>h6,
+#verbDiv>h6 {
     color: rgb(202, 196, 196);
     font-size: 23px;
     font-weight: 100;
@@ -126,12 +126,13 @@ body {
 }
 
 /* List of Meanings */
-#nounDiv > ul,  #verbDiv > ul {
+#nounDiv>ul,
+#verbDiv>ul {
     margin-left: 40px;
     margin-bottom: 50px;
 }
 
-#nounDiv > ul  > li {
+#nounDiv>ul>li {
     margin-top: 20px;
 }
 
@@ -140,13 +141,13 @@ body {
     gap: 20px;
 }
 
-.synonymDiv > span {
-   
+.synonymDiv>span {
+
     color: rgb(193, 188, 188);
 }
 
-.synonymDiv > p {
-    color:  #cc00ff;
+.synonymDiv>p {
+    color: #cc00ff;
     font-weight: 600;
 }
 
@@ -158,39 +159,35 @@ body {
     padding-top: 30px;
 }
 
-.sourceDiv > a {
+.sourceDiv>a {
     color: gray;
 }
 
+
+.errorMessage {
+    color: rgb(186, 17, 17);
+    text-align: center;
+}
 
 
 @media (max-width:600px) {
     #content {
         margin-inline: 10%;
-       
     }
     .navbar {
-       
         margin-inline: 5%;
         justify-content: space-between;
-      
-      
     }
+
     #search-div {
-       
         margin-inline: 10%;
     }
+
     .sourceDiv {
         font-size: small;
         justify-content: center;
     }
 }
-
-
-
-
-
-
 
 
 
@@ -242,8 +239,6 @@ input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
 }
 
-
-
 input:checked+.slider:before {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(20px);
@@ -260,12 +255,11 @@ input:checked+.slider:before {
 }
 
 
-
-
 /**
 *! Font Selection Drop Down Styles here
 **/
-/* Dropdown Button */
+
+
 .dropbtn {
     border-radius: 10px;
     padding: 10px 30px;
@@ -278,19 +272,19 @@ input:checked+.slider:before {
     gap: 12px;
 }
 
-/* Dropdown button on hover & focus */
+
 .dropbtn:hover,
 .dropbtn:focus {
     background-color: rgb(214, 212, 212);
 }
 
-/* The container <div> - needed to position the dropdown content */
+
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -300,7 +294,7 @@ input:checked+.slider:before {
     z-index: 1;
 }
 
-/* Links inside the dropdown */
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -309,12 +303,12 @@ input:checked+.slider:before {
     cursor: pointer;
 }
 
-/* Change color of dropdown links on hover */
+
 .dropdown-content a:hover {
     background-color: #ddd;
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+
 .show {
     display: block;
 }

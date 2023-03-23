@@ -43,6 +43,40 @@ function triggerButtonOnEnter(e) {
     }
 }
 
+function fetchWord() {
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchedWord.value}`)
+    .then(res => {
+        if(!res.ok) {
+            throw Error(`Sorry we couldn't find that word. Please try another one.`)
+        } else {
+           return res.json()
+        }
+        })
+    .then(data => {
+        word = data[0].word
+        phonetics = data[0].phonetics[0].text 
+        synonym = data[0].meanings[0].synonyms
+        noun = data[0].meanings[0].definitions
+        verb = data[0].meanings[1].definitions 
+        source = data[0].sourceUrls
+        searchedWord.value = ""
+        contentDiv.innerHTML = ""
+        createHeaderElement()
+        createPhoneticsElement()
+        createNounElements()
+        createVerbElements()
+        createSourceElements()
+    })  
+    .catch(error => {
+        contentDiv.innerHTML = ""
+        let errorElement = document.createElement("h1")
+        errorElement.setAttribute("class","errorMessage")
+        errorElement.textContent = error.message
+        contentDiv.append(errorElement)
+        
+    })
+}
+
 function changeMode() {
     darkMode = !darkMode
     if (darkMode) {
@@ -160,22 +194,4 @@ function createSourceElements() {
     icon.classList.add("fa-solid","fa-arrow-up-right-from-square")
 }
 
-function fetchWord() {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchedWord.value}`)
-    .then(res => res.json())
-    .then(data => {
-        word = data[0].word
-        phonetics = data[0].phonetics[0] ? data[0].phonetics[0].text : ""
-        synonym = data[0].meanings[0].synonyms
-        noun = data[0].meanings[0].definitions
-        verb = data[0].meanings[1] ? data[0].meanings[1].definitions : ""
-        source = data[0].sourceUrls
-        searchedWord.value = ""
-        contentDiv.innerHTML = ""
-        createHeaderElement()
-        createPhoneticsElement()
-        createNounElements()
-        createVerbElements()
-        createSourceElements()
-    } )  
-}
+
